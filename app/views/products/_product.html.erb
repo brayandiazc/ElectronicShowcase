@@ -16,6 +16,12 @@
     <%= product.category_id %>
   </p>
   <p>
+    <strong>Features:</strong>
+    <% product.features.each do |feature| %>
+      <%= feature.name %>
+    <% end %>
+  </p>
+  <p>
     <strong>Price:</strong>
     <%= product.price %>
   </p>

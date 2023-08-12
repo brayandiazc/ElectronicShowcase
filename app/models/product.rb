@@ -18,6 +18,9 @@ class Product < ApplicationRecord
   # Relaciones
   belongs_to :user
   belongs_to :category
+  ## Relación muchos a muchos
+  has_many :product_features, dependent: :destroy
+  has_many :features, through: :product_features
 
   # Validaciones
   validates :name,            presence: true,

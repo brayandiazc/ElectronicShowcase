@@ -13,4 +13,8 @@ class Feature < ApplicationRecord
   validates :name,      presence: true,
                         uniqueness: true
   validates :available, inclusion: { in: [true, false] }
+
+  ## Relación muchos a muchos
+  has_many :product_features, dependent: :destroy
+  has_many :products, through: :product_features
 end

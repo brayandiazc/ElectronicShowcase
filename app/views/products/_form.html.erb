@@ -32,6 +32,13 @@
     %>
   </div>
   <div>
+    <%= form.label :feature, style: "display: block" %>
+    <%= form.collection_check_boxes :feature_ids,
+        Feature.where(available: true), :id, :name,
+        required: true
+    %>
+  </div>
+  <div>
     <%= form.label :price, style: "display: block" %>
     <%= form.number_field :price,
         required: true,
