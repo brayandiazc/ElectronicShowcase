@@ -8,6 +8,14 @@
     <%= product.name %>
   </p>
   <p>
+    <strong>Photo:</strong>
+    <% if product.photo.attached? %>
+      <%= image_tag product.photo %>
+    <% else %>
+      No hay imagen
+    <% end %>
+  </p>
+  <p>
     <strong>Description:</strong>
     <%= product.description %>
   </p>
