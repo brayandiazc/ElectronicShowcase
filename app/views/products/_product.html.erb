@@ -1,0 +1,40 @@
+<div id="<%= dom_id product %>">
+  <p>
+    <strong>User:</strong>
+    <%= product.user.full_name %>
+  </p>
+  <p>
+    <strong>Name:</strong>
+    <%= product.name %>
+  </p>
+  <p>
+    <strong>Description:</strong>
+    <%= product.description %>
+  </p>
+  <p>
+    <strong>Category:</strong>
+    <%= product.category_id %>
+  </p>
+  <p>
+    <strong>Features:</strong>
+    <% product.features.each do |feature| %>
+      <%= feature.name %>
+    <% end %>
+  </p>
+  <p>
+    <strong>Price:</strong>
+    <%= product.price %>
+  </p>
+  <p>
+    <strong>Release date:</strong>
+    <%= product.release_date %>
+  </p>
+  <p>
+    <strong>Link to website:</strong>
+    <%= product.link_to_website %>
+  </p>
+  <p>
+    <strong>Available:</strong>
+    <%= product.available %>
+  </p>
+</div>

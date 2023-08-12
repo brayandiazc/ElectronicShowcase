@@ -32,4 +32,7 @@ class User < ApplicationRecord
   def full_name
     name.blank? ? email : name
   end
+
+  # Relaciones
+  has_many :products, dependent: :destroy
 end
