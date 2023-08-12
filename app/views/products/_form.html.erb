@@ -19,7 +19,7 @@
   </div>
   <div>
     <%= form.label :category_id, style: "display: block" %>
-    <%= form.text_field :category_id %>
+    <%= form.collection_select :category_id, Category.where(available: true), :id, :name %>
   </div>
   <div>
     <%= form.label :price, style: "display: block" %>
