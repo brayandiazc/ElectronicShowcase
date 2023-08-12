@@ -20,6 +20,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # Validaciones
+  validates :role, inclusion: { in: %w[normal administrador] }
+  # Enum de roles
+  enum role: {
+    normal: 'normal',
+    admin: 'administrador'
+  }, _default: 'normal'
+
   # Muestra en la vista uno por defecto
   def full_name
     name.blank? ? email : name
