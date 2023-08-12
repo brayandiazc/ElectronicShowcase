@@ -1,0 +1,69 @@
+<%= form_with(model: product) do |form| %>
+  <% if product.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <ul>
+        <% product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name,
+        autofocus: true,
+        required: true
+    %>
+  </div>
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description,
+        required: true,
+        minlength: 10
+    %>
+  </div>
+  <div>
+    <%= form.label :category_id, style: "display: block" %>
+    <%= form.collection_select :category_id,
+        Category.where(available: true), :id, :name,
+        include_blank: true,
+        required: true
+    %>
+  </div>
+  <div>
+    <%= form.label :feature, style: "display: block" %>
+    <%= form.collection_check_boxes :feature_ids,
+        Feature.where(available: true), :id, :name,
+        required: true
+    %>
+  </div>
+  <div>
+    <%= form.label :price, style: "display: block" %>
+    <%= form.number_field :price,
+        required: true,
+        min: 0
+    %>
+  </div>
+  <div>
+    <%= form.label :release_date, style: "display: block" %>
+    <%= form.date_field :release_date,
+        required: true,
+        value: Date.today
+    %>
+  </div>
+  <div>
+    <%= form.label :link_to_website, style: "display: block" %>
+    <%= form.text_field :link_to_website,
+        required: true,
+        value: "https://"
+    %>
+  </div>
+  <div>
+    <%= form.label :available, style: "display: block" %>
+    <%= form.check_box :available %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
