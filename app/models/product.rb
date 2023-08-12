@@ -21,6 +21,7 @@ class Product < ApplicationRecord
   ## Relación muchos a muchos
   has_many :product_features, dependent: :destroy
   has_many :features, through: :product_features
+  has_one_attached :photo
 
   # Validaciones
   validates :name,            presence: true,
