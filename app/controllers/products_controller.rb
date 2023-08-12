@@ -16,7 +16,13 @@ class ProductsController < ApplicationController
   end
 
   # GET /products/1/edit
-  def edit; end
+  def edit
+    if current_user.id == @product.user_id
+      @product = Product.find(params[:id])
+    else
+      redirect_to root_path, notice: 'No puedes editar un producto que no es tuyo'
+    end
+  end
 
   # POST /products or /products.json
   def create
