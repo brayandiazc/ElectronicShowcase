@@ -8,6 +8,14 @@
     <%= product.name %>
   </p>
   <p>
+    <strong>Photo:</strong>
+    <% if product.photo.attached? %>
+      <%= image_tag product.photo %>
+    <% else %>
+      <img src="https://picsum.photos/200/300" alt="">
+    <% end %>
+  </p>
+  <p>
     <strong>Description:</strong>
     <%= product.description %>
   </p>
