@@ -2,7 +2,6 @@
   <% if contact.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
-
       <ul>
         <% contact.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,22 +9,29 @@
       </ul>
     </div>
   <% end %>
-
   <div>
     <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name,
+        required: true
+    %>
   </div>
-
   <div>
     <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
-  </div>
+    <%= form.email_field :email,
+        required: true,
+        pattern: "^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$",
+        style: "text-transform:lowercase",
+        onkeyup: "javascript:this.value=this.value.toLowerCase();"
 
+    %>
+  </div>
   <div>
     <%= form.label :message, style: "display: block" %>
-    <%= form.text_area :message %>
+    <%= form.text_area :message,
+        required: true,
+        minlength: 10
+    %>
   </div>
-
   <div>
     <%= form.submit %>
   </div>
